@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Image from 'next/image';
 import Link from 'next/link';
 import BeerList from '../components/BeerList';
 import Head from '../components/head';
@@ -12,9 +13,14 @@ export default function IndexPage({beers}) {
   <Nav />
 
   <div className="w-full">
-    <h1 className="w-full text-xl text-center">
+
+    <div className="flex justify-center">
+      <Image src="/static/Surface.svg" height={360} width={360} />
+    </div>
+
+    <div className="w-full text-xl text-center">
       Surface Beer
-    </h1>
+    </div>
     <p className="text-center">
       Checkout the beers so far
     </p>
