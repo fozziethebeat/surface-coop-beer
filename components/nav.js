@@ -1,58 +1,35 @@
 import Link from 'next/link';
 
 const links = [
-  { href: '//github.com/create-next-app/create-next-app', label: 'Github' }
+  {
+    href: '//github.com/fozziethebeat/surface-coop-beer',
+    label: 'Github'
+  }
 ].map(link => {
-  link.key = `nav-link-${link.href}-${link.label}`
-  return link
+  link.key = `nav-link-${link.href}-${link.label}`;
+  return link;
 });
 
 const Nav = () => (
-  <nav>
-    <ul>
-      <li>
+  <nav className="text-center">
+    <ul className="flex justify-between py-3 px-3">
+      <li className="flex px-2 py-4">
         <Link href="/">
-          <a>Home</a>
+          <a className="text-blue-500 no-underline text-sm">Home</a>
         </Link>
       </li>
-      <ul>
+      <ul className="flex justify-between">
         {links.map(
           ({ key, href, label }) => (
-            <li key={key}>
+            <li className="flex px-2 py-4" key={key}>
               <Link href={href}>
-                <a>{label}</a>
+                <a className="text-blue-500 no-underline text-sm">{label}</a>
               </Link>
             </li>
           )
         )}
       </ul>
     </ul>
-
-    <style jsx>{`
-      :global(body) {
-        margin: 0;
-        font-family: -apple-system,BlinkMacSystemFont,Avenir Next,Avenir,Helvetica,sans-serif;
-      }
-      nav {
-        text-align: center;
-      }
-      ul {
-        display: flex;
-        justify-content: space-between;
-      }
-      nav > ul {
-        padding: 4px 16px;
-      }
-      li {
-        display: flex;
-        padding: 6px 8px;
-      }
-      a {
-        color: #067df7;
-        text-decoration: none;
-        font-size: 13px;
-      }
-    `}</style>
   </nav>
 );
 

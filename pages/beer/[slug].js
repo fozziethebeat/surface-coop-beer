@@ -5,90 +5,97 @@ import Nav from '../../components/nav';
 export default function Beer({beer}) {
   return (
 <div>
+
   <Head title={beer.name} />
+
   <Nav />
-  <div>
+
+  <div className="text-center text-2xl">
     <h1>
       {beer.name}
     </h1>
   </div>
 
-  <div>
-    <h2>Ingredients</h2>
-
+  <section className="px-4 py-3">
     <div>
-      <h3>Malts</h3>
-      <ul>
-        {beer.beer_recipes.malts.map(({malt, amount_ratio}) => (
-          <li key={malt.slug}>
-            {malt.name} @ {amount_ratio}%
-          </li>
-        ))}
-      </ul>
+      <div className="text-xl">Ingredients</div>
+
+      <div className="py-2">
+        <div className="text-lg">Malts</div>
+        <div className="grid grid-flow-col grid-cols-3 gap-4">
+          {beer.beer_recipes.malts.map(({malt, amount_ratio}) => (
+            <div key={malt.slug} className="hover:bg-blue-100 group block rounded-lg p-4 text-base text-center h-26 border border-gray-200">
+              {malt.name} @ {amount_ratio}%
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="py-2">
+        <div className="text-xl">Hops</div>
+        <div className="grid grid-flow-col grid-cols-3 gap-4">
+          {beer.beer_recipes.hops.map(({hop, amount_ratio}) => (
+            <div key={hop.slug} className="hover:bg-blue-100 group block rounded-lg p-4 text-base text-center h-26 border border-gray-200">
+              {hop.hops} @ {amount_ratio}%
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="py-2">
+        <div className="text-xl">Yeasts</div>
+        <div className="grid grid-flow-col grid-cols-3 gap-4">
+          {beer.beer_recipes.yeasts.map(({yeast}) => (
+            <div key={yeast.slug} className="hover:bg-blue-100 group block rounded-lg p-4 text-base text-center h-26 border border-gray-200">
+              {yeast.name}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
 
     <div>
-      <h3>Hops</h3>
-      <ul>
-        {beer.beer_recipes.hops.map(({hop, amount_ratio}) => (
-          <li key={hop.slug}>
-            {hop.hops} @ {amount_ratio}%
-          </li>
-        ))}
-      </ul>
+      <div className="text-xl">Process</div>
+
+      <div className="py-2">
+        <div className="text-lg">Liquids</div>
+        <div>
+          {beer.liquids.map((liquid) => (
+            <div key={liquid.type} className="flex-none w-full mt-0.5 font-normal">
+              <dt className="inline">{liquid.type}</dt>{': '}
+              <dd className="inline text-black">{liquid.amount_liters} liters</dd>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="py-2">
+        <div className="text-lg">Hops</div>
+        <div>
+          {beer.hop_additions.map(({hop, stage, time, amount_ratio}) => (
+            <div key={time} className="flex-none w-full mt-0.5 font-normal">
+              <dt className="inline">{time} {stage}</dt>{': '}
+              <dd className="inline text-black">{amount_ratio} % {hop.hops}</dd>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="py-2">
+        <div className="text-lg">Timeline</div>
+        <div>
+          {beer.timeline.map((timeline) => (
+            <div key={timeline.stage} className="flex-none w-full mt-0.5 font-normal">
+              <dt className="inline">{timeline.stage}</dt>{': '}
+              <dd className="inline text-black">Done on {timeline.date}</dd>
+            </div>
+          ))}
+        </div>
+      </div>
+
     </div>
 
-
-    <div>
-      <h3>Yeast</h3>
-      <ul>
-        {beer.beer_recipes.yeasts.map(({yeast}) => (
-          <li key={yeast.slug}>
-            {yeast.name}
-          </li>
-        ))}
-      </ul>
-    </div>
-  </div>
-
-  <div>
-    <h2>Process</h2>
-
-    <div>
-      <h3>Liquids</h3>
-      <ul>
-        {beer.liquids.map((liquid) => (
-          <li key={liquid.type}>
-            {liquid.type}: {liquid.amount_liters} liters
-          </li>
-        ))}
-      </ul>
-    </div>
-
-    <div>
-      <h3>Hops</h3>
-      <ul>
-        {beer.hop_additions.map(({hop, stage, time, amount_ratio}) => (
-          <li key={hop.slug}>
-            {amount_ratio} % {hop.hops} @
-            {time} {stage}
-          </li>
-        ))}
-      </ul>
-    </div>
-
-    <div>
-      <h3>Timeline</h3>
-      <ul>
-        {beer.timeline.map((timeline) => (
-          <li key={timeline.stage}>
-            {timeline.stage}: Done on {timeline.date}
-          </li>
-        ))}
-      </ul>
-    </div>
-
-  </div>
+  </section>
 
 </div>
 );}
