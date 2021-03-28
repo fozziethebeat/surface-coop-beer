@@ -11,10 +11,6 @@ export default function Beer({beer}) {
   <Nav />
 
   <div className="text-center text-2xl">
-    <h1>
-      {beer.name}
-    </h1>
-  </div>
 
   <section className="px-4 py-3">
     <div>
@@ -96,9 +92,11 @@ export default function Beer({beer}) {
     </div>
 
   </section>
+  </div>
 
 </div>
-);}
+);
+}
 
 export async function getStaticPaths() {
   const {data : beers} = await axios.get(
