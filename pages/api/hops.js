@@ -5,6 +5,12 @@ fs.readdir(__dirname, (err, files) => {
     console.log(file);
   });
 });
+fs.readdir(process.cwd(), (err, files) => {
+  files.forEach(file => {
+    console.log(file);
+  });
+});
+
 
 import { PrismaClient } from '@prisma/client'
 
