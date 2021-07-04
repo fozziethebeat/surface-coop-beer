@@ -14,8 +14,11 @@ db.each("select * from Hop order by Id", function (err, row) {
 db.close();
 
 export default function handler(req, res) {
+  console.log(req.query);
   const start_index = Number(req.query.index) || 0;
+  console.log(start_index);
   const size = Number(req.query.size) || 20;
+  console.log(size);
   const end_index = start_index + size;
   if (req.query.prefix) {
     const result = hop_tree.get(req.query.prefix).slice(start_index, end_index);
