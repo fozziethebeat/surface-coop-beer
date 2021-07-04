@@ -1,3 +1,11 @@
+import fs from 'fs';
+
+fs.readdir(__dirname, (err, files) => {
+  files.forEach(file => {
+    console.log(file);
+  });
+});
+
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
