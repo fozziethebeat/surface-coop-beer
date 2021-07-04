@@ -1,17 +1,18 @@
-//import sqlite3 from "sqlite3";
-//import Tree from "prefix-tree";
+import sqlite3 from "sqlite3";
+import Tree from "prefix-tree";
 
-//let db = new sqlite3.Database(process.env.BREW_DB_PATH);
-//let hop_tree = new Tree();
+let db = new sqlite3.Database(process.env.BREW_DB_PATH);
+let hop_tree = new Tree();
 let hop_list = [];
-//db.each("select * from Hop order by Id", function (err, row) {
+db.each("select * from Hop order by Id", function (err, row) {
+  console.log(row);
 //  hop_list.push(row);
 //  const name = row.Name;
 //  const name_lower = name.toLowerCase();
 //  hop_tree.set(name, row);
 //  hop_tree.set(name_lower, row);
-//});
-//db.close();
+});
+db.close();
 
 export default function handler(req, res) {
   console.log(req.query);
