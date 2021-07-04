@@ -1,31 +1,28 @@
-import sqlite3 from "sqlite3";
-import Tree from "prefix-tree";
+import { PrismaClient } from '@prisma/client'
 
-let db = new sqlite3.Database(process.env.BREW_DB_PATH);
-let hop_tree = new Tree();
-let hop_list = [];
-db.each("select * from Hop order by Id", function (err, row) {
-  console.log(row);
-//  hop_list.push(row);
-//  const name = row.Name;
-//  const name_lower = name.toLowerCase();
-//  hop_tree.set(name, row);
-//  hop_tree.set(name_lower, row);
-});
-db.close();
+const prisma = new PrismaClient()
 
-export default function handler(req, res) {
-  console.log(req.query);
+export default async function handler(req, res) {
   const start_index = Number(req.query.index) || 0;
-  console.log(start_index);
-  const size = Number(req.query.size) || 20;
-  console.log(size);
+  const size = Number(req.query.size) || 21;
   const end_index = start_index + size;
+
   if (req.query.prefix) {
-    const result = hop_tree.get(req.query.prefix).slice(start_index, end_index);
+    const result  = await prisma.hop.findMany({
+      where: {
+        Name: {
+          startsWith: req.query.prefix,
+        },
+      },
+      skip: start_index,
+      take: size,
+    });
     res.status(200).json(result);
     return;
   }
-  const result = hop_list.slice(start_index, end_index);
+  const result  = await prisma.hop.findMany({
+    skip: start_index,
+    take: size,
+  });
   res.status(200).json(result);
 }

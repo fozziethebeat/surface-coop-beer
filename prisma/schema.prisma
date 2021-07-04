@@ -1,0 +1,149 @@
+datasource db {
+  provider = "sqlite"
+  url      = ENV("BREW_DB_PATH")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Alias {
+  HopId Int?
+  Name  String @unique
+  Hop   Hop?   @relation(fields: [HopId], references: [Id])
+}
+
+model Aroma {
+  HopId       Int
+  Profile     Int
+  Hop         Hop         @relation(fields: [HopId], references: [Id])
+  LookupAroma LookupAroma @relation(fields: [Profile], references: [Id]) @ignore
+
+  @@id([HopId, Profile])
+}
+
+model Hop {
+  Id                                   Int                @id @default(autoincrement())
+  Aroma                                String?
+  BrewingUsage                         Int
+  Name                                 String?            @unique
+  Pedigree                             String?
+  AlphaMax                             Float              @default(0)
+  AlphaMin                             Float              @default(0)
+  BetaMax                              Float              @default(0)
+  BetaMin                              Float              @default(0)
+  CoHumuloneMax                        Int                @default(0)
+  CoHumuloneMin                        Int                @default(0)
+  Info                                 String?
+  Styles                               String?
+  TotalOilMax                          Float              @default(0)
+  TotalOilMin                          Float              @default(0)
+  Trade                                String?
+  LookupBrewingUsage                   LookupBrewingUsage @relation(fields: [BrewingUsage], references: [Id])
+  Alias                                Alias[]
+  Aroma_AromaToHop                     Aroma[]
+  Substitution_HopToSubstitution_HopId Substitution[]     @relation("HopToSubstitution_HopId") @ignore
+  Substitution_HopToSubstitution_SubId Substitution[]     @relation("HopToSubstitution_SubId") @ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model LookupAroma {
+  Id    Int?                  @id
+  Name  Unsupported("STRING") @unique
+  Aroma Aroma[]
+
+  @@ignore
+}
+
+model LookupBrewingUsage {
+  Id   Int     @id @default(autoincrement())
+  Name String? @unique
+  Hop  Hop[]
+}
+
+model LookupGrainType {
+  Id   Int                   @id @default(autoincrement())
+  Name Unsupported("STRING") @unique
+  Malt Malt[]
+}
+
+model LookupLab {
+  Id    Int                   @id
+  Name  Unsupported("STRING") @unique
+  Yeast Yeast[]
+}
+
+model LookupMaltster {
+  Id   Int                   @id @default(autoincrement())
+  Name Unsupported("STRING") @unique
+  Malt Malt[]
+}
+
+model LookupYeastFlocculation {
+  Id    Int                   @id
+  Name  Unsupported("STRING") @unique
+  Yeast Yeast[]
+}
+
+model LookupYeastForm {
+  Id    Int                   @id
+  Name  Unsupported("STRING") @unique
+  Yeast Yeast[]
+}
+
+model LookupYeastStrain {
+  Id    Int                   @id
+  Name  Unsupported("STRING") @unique
+  Yeast Yeast[]
+}
+
+model Malt {
+  Id              Int              @id @default(autoincrement())
+  Name            String
+  Description     String?
+  EBCMin          Float?
+  EBCMax          Float?
+  Maltster        Int
+  Ratio           Int?
+  Yield           Float?
+  Grain           Int?
+  Moisture        Int?
+  DiastaticPower  Int?
+  TotalNitrogen   Int?
+  KolbachIndex    Int?
+  TotalProtein    Int?
+  SNR             Int?
+  LookupGrainType LookupGrainType? @relation(fields: [Grain], references: [Id])
+  LookupMaltster  LookupMaltster   @relation(fields: [Maltster], references: [Id])
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model Substitution {
+  HopId                       Int
+  SubId                       Int
+  Hop_HopToSubstitution_HopId Hop @relation("HopToSubstitution_HopId", fields: [HopId], references: [Id])
+  Hop_HopToSubstitution_SubId Hop @relation("HopToSubstitution_SubId", fields: [SubId], references: [Id])
+
+  @@index([HopId], name: "HopId")
+  @@ignore
+}
+
+model Yeast {
+  Id                      Int                      @id @default(autoincrement())
+  Name                    String
+  Description             String
+  TempMin                 Int
+  TempMax                 Int
+  Lab                     Int
+  AttenuationMin          Int?
+  AttenuationMax          Int?
+  Form                    Int?
+  Flocculation            Int?
+  Styles                  String?
+  Strain                  Int?
+  AlcoholTolerance        Int?
+  LookupYeastFlocculation LookupYeastFlocculation? @relation(fields: [Flocculation], references: [Id])
+  LookupYeastForm         LookupYeastForm?         @relation(fields: [Form], references: [Id])
+  LookupLab               LookupLab                @relation(fields: [Lab], references: [Id])
+  LookupYeastStrain       LookupYeastStrain?       @relation(fields: [Strain], references: [Id])
+}
