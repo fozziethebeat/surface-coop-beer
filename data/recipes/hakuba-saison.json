@@ -1,0 +1,209 @@
+{
+  "beerjson": {
+    "version": 2.06,
+    "recipes": [
+      {
+        "name": "Hakuba Saison",
+        "type": "all grain",
+        "author": "fozziethebeat",
+        "batch_size": {
+          "unit": "l",
+          "value": "12"
+        },
+        "style": {
+          "name": "Saison",
+          "category": "wheat ale",
+          "type": "beer"
+        },
+        "ingredients": {
+          "fermentable_additions": [
+            {
+              "name": "Pale 2-Row",
+              "type": "grain",
+              "grain_group": "base",
+              "amount": {
+                "unit": "g",
+                "value": 2940
+              }
+            },
+            {
+              "name": "Wheat",
+              "type": "grain",
+              "grain_group": "base",
+              "amount": {
+                "unit": "g",
+                "value": 400
+              }
+            },
+            {
+              "name": "Flaked Wheat",
+              "type": "grain",
+              "grain_group": "flaked",
+              "amount": {
+                "unit": "g",
+                "value": 163
+              }
+            },
+            {
+              "name": "Oaks Flaked",
+              "type": "grain",
+              "grain_group": "flaked",
+              "amount": {
+                "unit": "g",
+                "value": 82
+              }
+            }
+          ],
+          "hop_additions": [
+            {
+              "name": "Amarillo",
+              "alpha_acid": {
+                "unit": "%",
+                "value": 9.2
+              },
+              "amount": {
+                "unit": "g",
+                "value": 5.2
+              },
+              "timing": {
+                "time": {
+                  "unit": "min",
+                  "value": 60
+                },
+                "use": "add_to_boil"
+              }
+            },
+            {
+              "name": "Cascade",
+              "alpha_acid": {
+                "unit": "%",
+                "value": 7.0
+              },
+              "amount": {
+                "unit": "g",
+                "value": 5.2
+              },
+              "timing": {
+                "time": {
+                  "unit": "min",
+                  "value": 15
+                },
+                "use": "add_to_boil"
+              }
+            },
+            {
+              "name": "Chinook",
+              "alpha_acid": {
+                "unit": "%",
+                "value": 12.1
+              },
+              "amount": {
+                "unit": "g",
+                "value": 5.2
+              },
+              "timing": {
+                "time": {
+                  "unit": "min",
+                  "value": 10
+                },
+                "use": "add_to_boil"
+              }
+            },
+            {
+              "name": "Cascade",
+              "alpha_acid": {
+                "unit": "%",
+                "value": 7.0
+              },
+              "amount": {
+                "unit": "g",
+                "value": 5.2
+              },
+              "timing": {
+                "time": {
+                  "unit": "min",
+                  "value": 5
+                },
+                "use": "add_to_boil"
+              }
+            }
+          ],
+          "culture_additions": [
+            {
+              "name": "White Labs WLP566 Belgian Saison II Yeast",
+              "type": "ale",
+              "form": "liquid",
+              "producer": "White Labs",
+              "amount": {
+                "unit": "package",
+                "value": 1
+              }
+            }
+          ]
+        },
+        "mash": {
+          "name": "Mash",
+          "mash_steps": [
+            {
+              "type": "infusion",
+              "amount": {
+                "unit": "l",
+                "value": 19.33
+              },
+              "step_temperature": {
+                "unit": "C",
+                "value": 70
+              },
+              "step_time": {
+                "unit": "min",
+                "value": 60
+              }
+            }
+          ]
+        },
+        "boil": {
+          "name": "60 minute boil",
+          "description": "Standard 60 minute boil",
+          "pre_boil_size": {
+            "unit": "l",
+            "value": 16.54
+          },
+          "boil_time": {
+            "unit": "min",
+            "value": 60
+          }
+        },
+        "fermentation": {
+          "name": "Ale, Single Stage",
+          "description": "Slightly temperature controlled",
+          "fermentation_steps": [
+            {
+              "name": "Fermentation",
+              "start_temperature": {
+                "unit": "C",
+                "value": 20
+              },
+              "free_rise": false,
+              "start_gravity": {
+                "unit": "sg",
+                "value": 1.063
+              },
+              "end_gravity": {
+                "unit": "sg",
+                "value": 1.006
+              },
+              "end_temperature": {
+                "unit": "C",
+                "value": 20
+              },
+              "step_time": {
+                "unit": "day",
+                "value": 14
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

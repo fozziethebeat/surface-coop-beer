@@ -1,0 +1,164 @@
+{
+  "beerjson": {
+    "version": 2.06,
+    "recipes": [
+      {
+        "name": "English Wheat Ale",
+        "type": "all grain",
+        "author": "fozziethebeat",
+        "batch_size": {
+          "unit": "l",
+          "value": "12"
+        },
+        "style": {
+          "name": "Wheat Ale",
+          "category": "wheat ale",
+          "type": "beer"
+        },
+        "ingredients": {
+          "fermentable_additions": [
+            {
+              "name": "Pale 2-Row",
+              "type": "grain",
+              "grain_group": "base",
+              "amount": {
+                "unit": "g",
+                "value": 2520
+              }
+            },
+            {
+              "name": "Wheat",
+              "type": "grain",
+              "grain_group": "base",
+              "amount": {
+                "unit": "g",
+                "value": 1000
+              }
+            },
+            {
+              "name": "Wheat Flaked",
+              "type": "grain",
+              "grain_group": "flaked",
+              "amount": {
+                "unit": "g",
+                "value": 80
+              }
+            }
+          ],
+          "hop_additions": [
+            {
+              "name": "Simcoe",
+              "alpha_acid": {
+                "unit": "%",
+                "value": 13.0
+              },
+              "amount": {
+                "unit": "g",
+                "value": 20
+              },
+              "timing": {
+                "time": {
+                  "unit": "min",
+                  "value": 60
+                },
+                "use": "add_to_boil"
+              }
+            },
+            {
+              "name": "Mosaic",
+              "alpha_acid": {
+                "unit": "%",
+                "value": 12.25
+              },
+              "amount": {
+                "unit": "g",
+                "value": 20
+              },
+              "timing": {
+                "time": {
+                  "unit": "min",
+                  "value": 15
+                },
+                "use": "add_to_boil"
+              }
+            }
+          ],
+          "culture_additions": [
+            {
+              "name": "Fermentis US-04 Safale English",
+              "type": "ale",
+              "form": "dried",
+              "producer": "Fermentis",
+              "amount": {
+                "unit": "package",
+                "value": 1
+              }
+            }
+          ]
+        },
+        "mash": {
+          "name": "Mash",
+          "mash_steps": [
+            {
+              "type": "infusion",
+              "amount": {
+                "unit": "l",
+                "value": 19.33
+              },
+              "step_temperature": {
+                "unit": "C",
+                "value": 70
+              },
+              "step_time": {
+                "unit": "min",
+                "value": 60
+              }
+            }
+          ]
+        },
+        "boil": {
+          "name": "60 minute boil",
+          "description": "Standard 60 minute boil",
+          "pre_boil_size": {
+            "unit": "l",
+            "value": 16.54
+          },
+          "boil_time": {
+            "unit": "min",
+            "value": 60
+          }
+        },
+        "fermentation": {
+          "name": "Ale, Single Stage",
+          "description": "Slightly temperature controlled",
+          "fermentation_steps": [
+            {
+              "name": "Fermentation",
+              "start_temperature": {
+                "unit": "C",
+                "value": 20
+              },
+              "free_rise": false,
+              "start_gravity": {
+                "unit": "sg",
+                "value": 1.067
+              },
+              "end_gravity": {
+                "unit": "sg",
+                "value": 1.016
+              },
+              "end_temperature": {
+                "unit": "C",
+                "value": 20
+              },
+              "step_time": {
+                "unit": "day",
+                "value": 14
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

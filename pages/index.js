@@ -1,41 +1,40 @@
-import axios from 'axios';
-import Image from 'next/image';
-import Link from 'next/link';
-import BeerList from '../components/BeerList';
-import Head from '../components/head';
-import Nav from '../components/nav';
+import fs from "fs";
+import path from "path";
 
-export default function IndexPage({beers}) {
+import Image from "next/image";
+import Link from "next/link";
+
+import BeerList from "../components/BeerList";
+import Head from "../components/head";
+import Nav from "../components/nav";
+import getbeers from "../lib/getbeers";
+
+export default function IndexPage({ beers }) {
   return (
-<div>
-  <Head title="Home" />
+    <div>
+      <Head title="Home" />
 
-  <Nav />
+      <Nav />
 
-  <div className="w-full">
+      <div className="w-full">
+        <div className="flex justify-center">
+          <Image src="/static/Surface.svg" height={360} width={360} />
+        </div>
 
-    <div className="flex justify-center">
-      <Image src="/static/Surface.svg" height={360} width={360} />
+        <div className="w-full text-xl text-center">Surface Beer</div>
+        <p className="text-center">Checkout the beers so far</p>
+      </div>
+
+      <BeerList beers={beers} />
     </div>
-
-    <div className="w-full text-xl text-center">
-      Surface Beer
-    </div>
-    <p className="text-center">
-      Checkout the beers so far
-    </p>
-  </div>
-
-  <BeerList beers={beers} />
-</div>
   );
 }
 
-export async function getServerSideProps(context) {
-  try {
-    const {data : beers} = await axios.get(process.env.DATABASE_ENDPOINT + '/beers');
-    return {props : {beers : beers}};
-  } catch (error) {
-    return {props : {beers : []}};
-  }
+export async function getStaticProps() {
+  const beers = getbeers();
+  return {
+    props: {
+      beers,
+    },
+  };
 }

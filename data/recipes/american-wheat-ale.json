@@ -1,0 +1,218 @@
+{
+  "beerjson": {
+    "version": 2.06,
+    "recipes": [
+      {
+        "name": "American Wheat Ale",
+        "type": "all grain",
+        "author": "fozziethebeat",
+        "batch_size": {
+          "unit": "l",
+          "value": "12"
+        },
+        "style": {
+          "name": "Wheat Ale",
+          "category": "wheat ale",
+          "type": "beer"
+        },
+        "ingredients": {
+          "fermentable_additions": [
+            {
+              "name": "Pale 2-Row",
+              "type": "grain",
+              "grain_group": "base",
+              "amount": {
+                "unit": "g",
+                "value": 3000
+              }
+            },
+            {
+              "name": "Wheat",
+              "type": "grain",
+              "grain_group": "base",
+              "amount": {
+                "unit": "g",
+                "value": 600
+              }
+            },
+            {
+              "name": "Maris Otter",
+              "type": "grain",
+              "grain_group": "base",
+              "amount": {
+                "unit": "g",
+                "value": 300
+              }
+            },
+            {
+              "name": "Wheat Flaked",
+              "type": "grain",
+              "grain_group": "flaked",
+              "amount": {
+                "unit": "g",
+                "value": 300
+              }
+            },
+            {
+              "name": "Oaks Flaked",
+              "type": "grain",
+              "grain_group": "flaked",
+              "amount": {
+                "unit": "g",
+                "value": 200
+              }
+            }
+          ],
+          "hop_additions": [
+            {
+              "name": "Amarillo",
+              "alpha_acid": {
+                "unit": "%",
+                "value": 9.2
+              },
+              "amount": {
+                "unit": "g",
+                "value": 6
+              },
+              "timing": {
+                "time": {
+                  "unit": "min",
+                  "value": 60
+                },
+                "use": "add_to_boil"
+              }
+            },
+            {
+              "name": "Amarillo",
+              "alpha_acid": {
+                "unit": "%",
+                "value": 7.0
+              },
+              "amount": {
+                "unit": "g",
+                "value": 6
+              },
+              "timing": {
+                "time": {
+                  "unit": "min",
+                  "value": 15
+                },
+                "use": "add_to_boil"
+              }
+            },
+            {
+              "name": "Amarillo",
+              "alpha_acid": {
+                "unit": "%",
+                "value": 7.0
+              },
+              "amount": {
+                "unit": "g",
+                "value": 6
+              },
+              "timing": {
+                "time": {
+                  "unit": "min",
+                  "value": 10
+                },
+                "use": "add_to_boil"
+              }
+            },
+            {
+              "name": "Amarillo",
+              "alpha_acid": {
+                "unit": "%",
+                "value": 7.0
+              },
+              "amount": {
+                "unit": "g",
+                "value": 6
+              },
+              "timing": {
+                "time": {
+                  "unit": "min",
+                  "value": 5
+                },
+                "use": "add_to_boil"
+              }
+            }
+          ],
+          "culture_additions": [
+            {
+              "name": "Fermentis US-05 Safale American",
+              "type": "ale",
+              "form": "dried",
+              "producer": "Fermentis",
+              "amount": {
+                "unit": "package",
+                "value": 1
+              }
+            }
+          ]
+        },
+        "mash": {
+          "name": "Mash",
+          "mash_steps": [
+            {
+              "type": "infusion",
+              "amount": {
+                "unit": "l",
+                "value": 20.1
+              },
+              "step_temperature": {
+                "unit": "C",
+                "value": 70
+              },
+              "step_time": {
+                "unit": "min",
+                "value": 60
+              }
+            }
+          ]
+        },
+        "boil": {
+          "name": "60 minute boil",
+          "description": "Standard 60 minute boil",
+          "pre_boil_size": {
+            "unit": "l",
+            "value": 10
+          },
+          "boil_time": {
+            "unit": "min",
+            "value": 60
+          }
+        },
+        "fermentation": {
+          "name": "Ale, Single Stage",
+          "description": "Slightly temperature controlled",
+          "fermentation_steps": [
+            {
+              "name": "Fermentation",
+              "start_temperature": {
+                "unit": "C",
+                "value": 20
+              },
+              "free_rise": false,
+              "start_gravity": {
+                "unit": "sg",
+                "value": 1.052
+              },
+              "end_gravity": {
+                "unit": "sg",
+                "value": 1.01
+              },
+              "end_temperature": {
+                "unit": "C",
+                "value": 20
+              },
+              "step_time": {
+                "unit": "day",
+                "value": 14
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

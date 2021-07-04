@@ -1,0 +1,214 @@
+{
+  "beerjson": {
+    "version": 2.06,
+    "recipes": [
+      {
+        "name": "Maybe Stout",
+        "type": "all grain",
+        "author": "fozziethebeat",
+        "style": {
+          "name": "Stout",
+          "category": "ale",
+          "type": "beer"
+        },
+        "ingredients": {
+          "fermentable_additions": [
+            {
+              "name": "Pilsner 2-Row",
+              "type": "grain",
+              "grain_group": "base",
+              "amount": {
+                "unit": "g",
+                "value": 3000
+              }
+            },
+            {
+              "name": "Black Malt",
+              "type": "grain",
+              "grain_group": "base",
+              "amount": {
+                "unit": "g",
+                "value": 400
+              }
+            },
+            {
+              "name": "Crystal Oak",
+              "type": "grain",
+              "grain_group": "base",
+              "amount": {
+                "unit": "g",
+                "value": 400
+              }
+            },
+            {
+              "name": "Flaked Oats",
+              "type": "flaked",
+              "grain_group": "base",
+              "amount": {
+                "unit": "g",
+                "value": 300
+              }
+            },
+            {
+              "name": "Chocolate",
+              "type": "grain",
+              "grain_group": "base",
+              "amount": {
+                "unit": "g",
+                "value": 200
+              }
+            }
+          ],
+          "hop_additions": [
+            {
+              "name": "Willamette",
+              "alpha_acid": {
+                "unit": "%",
+                "value": 5.1
+              },
+              "amount": {
+                "unit": "g",
+                "value": 12
+              },
+              "timing": {
+                "time": {
+                  "unit": "min",
+                  "value": 60
+                },
+                "use": "add_to_boil"
+              }
+            },
+            {
+              "name": "Cascade",
+              "alpha_acid": {
+                "unit": "%",
+                "value": 7.0
+              },
+              "amount": {
+                "unit": "g",
+                "value": 5
+              },
+              "timing": {
+                "time": {
+                  "unit": "min",
+                  "value": 60
+                },
+                "use": "add_to_boil"
+              }
+            },
+            {
+              "name": "Willamette",
+              "alpha_acid": {
+                "unit": "%",
+                "value": 5.5
+              },
+              "amount": {
+                "unit": "g",
+                "value": 6
+              },
+              "timing": {
+                "time": {
+                  "unit": "min",
+                  "value": 15
+                },
+                "use": "add_to_boil"
+              }
+            },
+            {
+              "name": "Cascade",
+              "alpha_acid": {
+                "unit": "%",
+                "value": 7.0
+              },
+              "amount": {
+                "unit": "g",
+                "value": 6
+              },
+              "timing": {
+                "time": {
+                  "unit": "min",
+                  "value": 10
+                },
+                "use": "add_to_boil"
+              }
+            }
+          ],
+          "culture_additions": [
+            {
+              "name": "Fermentis US-05 Safale American Ale",
+              "type": "ale",
+              "form": "dried",
+              "producer": "Fermentis",
+              "amount": {
+                "unit": "package",
+                "value": 1
+              }
+            }
+          ]
+        },
+        "mash": {
+          "name": "Mash",
+          "mash_steps": [
+            {
+              "type": "infusion",
+              "amount": {
+                "unit": "l",
+                "value": 20.01
+              },
+              "step_temperature": {
+                "unit": "C",
+                "value": 70
+              },
+              "step_time": {
+                "unit": "min",
+                "value": 60
+              }
+            }
+          ]
+        },
+        "boil": {
+          "name": "60 minute boil",
+          "description": "Standard 60 minute boil",
+          "pre_boil_size": {
+            "unit": "l",
+            "value": 16.54
+          },
+          "boil_time": {
+            "unit": "min",
+            "value": 60
+          }
+        },
+        "fermentation": {
+          "name": "Ale, Single Stage",
+          "description": "Slightly temperature controlled",
+          "fermentation_steps": [
+            {
+              "name": "Fermentation",
+              "start_temperature": {
+                "unit": "C",
+                "value": 20
+              },
+              "free_rise": false,
+              "start_gravity": {
+                "unit": "sg",
+                "value": 1.07
+              },
+              "end_gravity": {
+                "unit": "sg",
+                "value": 1.015
+              },
+              "end_temperature": {
+                "unit": "C",
+                "value": 20
+              },
+              "step_time": {
+                "unit": "day",
+                "value": 14
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
