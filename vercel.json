@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/hops.js": {
+    "pages/api/hops.js": {
       "includeFiles": "brew_db/brewDB.sqlite"
     }
   }
