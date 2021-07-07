@@ -1,6 +1,7 @@
 import fs from 'fs';
 
-const { serverRuntimeConfig } = getConfig()
+import getConfig from 'next/config';
+const { serverRuntimeConfig } = getConfig();
 console.log(serverRuntimeConfig);
 
 import { PrismaClient } from '@prisma/client'
