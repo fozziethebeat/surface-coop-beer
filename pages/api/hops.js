@@ -1,18 +1,7 @@
 import fs from 'fs';
 
-fs.readdir(__dirname, (err, files) => {
-  files.forEach(file => {
-    console.log(file);
-  });
-});
-
-
-fs.readdir(process.cwd(), (err, files) => {
-  files.forEach(file => {
-    console.log(file);
-  });
-});
-
+const { serverRuntimeConfig } = getConfig()
+console.log(serverRuntimeConfig);
 
 import { PrismaClient } from '@prisma/client'
 
