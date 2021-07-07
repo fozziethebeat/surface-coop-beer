@@ -1,8 +1,18 @@
 import fs from 'fs';
 
-import getConfig from 'next/config';
-const { serverRuntimeConfig } = getConfig();
-console.log(serverRuntimeConfig);
+fs.readdir(__dirname, (err, files) => {
+  files.forEach(file => {
+    console.log(file);
+  });
+});
+
+
+fs.readdir(process.cwd(), (err, files) => {
+  files.forEach(file => {
+    console.log(file);
+  });
+});
+
 
 import { PrismaClient } from '@prisma/client'
 
