@@ -1,7 +1,7 @@
 {
   "functions": {
     "pages/api/hops.js": {
-      "includeFiles": "prisma/brew_db/**"
+      "includeFiles": "prisma/brewDB.sqlite"
     }
   }
 }
