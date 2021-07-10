@@ -1,3 +1,13 @@
+import fs from 'fs';
+
+console.log('bootup');
+fs.readdir(process.cwd() + '/.next/', (err, files) => {
+  console.log(process.cwd());
+  files.forEach(file => {
+    console.log(file);
+  });
+});
+
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
