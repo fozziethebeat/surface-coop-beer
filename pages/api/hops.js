@@ -1,12 +1,3 @@
-import fs from 'fs';
-
-fs.readdir(process.cwd() + '/.next/server/chunks', (err, files) => {
-  files.forEach(file => {
-    console.log(file);
-  });
-});
-
-
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
