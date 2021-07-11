@@ -1,5 +1,6 @@
 import fs from 'fs';
 
+console.log(process.cwd());
 fs.readdir(process.cwd() + '/.next/server/chunks', (err, files) => {
   files.forEach(file => {
     console.log(file);
