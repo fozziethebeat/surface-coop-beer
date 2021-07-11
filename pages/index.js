@@ -18,7 +18,7 @@ export default function IndexPage({ beers }) {
 
       <div className="w-full">
         <div className="flex justify-center">
-          <Image src="/static/Surface.svg" height={360} width={360} />
+          <Image src="/Surface.svg" height={360} width={360} />
         </div>
 
         <div className="w-full text-xl text-center">Surface Beer</div>
