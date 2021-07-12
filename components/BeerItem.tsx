@@ -1,6 +1,8 @@
+import PropTypes from "prop-types";
+import React from "react";
 import Link from "next/link";
 
-export default function BeerItem({ beer }) {
+function BeerItem({ beer }) {
   return (
     <li>
       <Link as={`/beer/${beer.slug}`} href="/beer/[id]">
@@ -11,3 +13,15 @@ export default function BeerItem({ beer }) {
     </li>
   );
 }
+
+BeerItem.propTypes = {
+  /**
+   * A single beer
+   */
+  beer: PropTypes.shape({
+    slug: PropTypes.string,
+    name: PropTypes.string,
+  }).isRequired,
+};
+
+export default BeerItem;
