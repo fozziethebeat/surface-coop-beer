@@ -3,10 +3,65 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { shape, string } from "prop-types";
 import path from "path";
 import React from "react";
+import styled from "styled-components";
 
 import Head from "../../components/head";
 import Nav from "../../components/nav";
 import getbeers from "../../lib/getbeers";
+
+const Card = styled.div`
+  border-color: rgba(229, 231, 235);
+  border-radius: 0.5rem;
+  border-style: solid;
+  border-width: 1px;
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+
+  :hover {
+    background-color: rgba(219, 234, 254);
+  }
+`;
+
+const GridDiv = styled.div`
+  display: grid;
+  gap: 1rem;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+`;
+
+const Container = styled.div`
+  text-align: center;
+`;
+
+const Section = styled.section`
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+`;
+
+const SubSection = styled.div`
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+`;
+
+const Title = styled.div`
+  font-size: 1.5rem;
+  line-height: 2rem;
+`;
+
+const Header1 = styled.div`
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+`;
+
+const Header2 = styled.div`
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+`;
 
 export default function Beer({ beer }) {
   return (
@@ -15,68 +70,57 @@ export default function Beer({ beer }) {
 
       <Nav />
 
-      <div className="text-center text-2xl">
-        <section className="px-4 py-3">
-          <div className="text-xxl">{beer.name}</div>
+      <Container>
+        <Section>
+          <Title>{beer.name}</Title>
           <div>
-            <div className="text-xl">Ingredients</div>
+            <Header1>Ingredients</Header1>
 
-            <div className="py-2">
-              <div className="text-lg">Malts</div>
-              <div className="grid grid-flow-col grid-cols-3 gap-4">
+            <SubSection>
+              <Header2>Malts</Header2>
+              <GridDiv>
                 {beer.ingredients.fermentable_additions.map((malt) => (
-                  <div
-                    key={malt.name}
-                    className="hover:bg-blue-100 group block rounded-lg p-4 text-base text-center h-26 border border-gray-200"
-                  >
+                  <Card key={malt.name}>
                     {malt.name} {malt.amount.value} {malt.amount.unit}
-                  </div>
+                  </Card>
                 ))}
-              </div>
-            </div>
+              </GridDiv>
+            </SubSection>
 
-            <div className="py-2">
-              <div className="text-xl">Hops</div>
-              <div className="grid grid-flow-col grid-cols-3 gap-4">
+            <SubSection>
+              <Header2>Hops</Header2>
+              <GridDiv>
                 {beer.ingredients.hop_additions.map((hop) => (
-                  <div
-                    key={hop.name}
-                    className="hover:bg-blue-100 group block rounded-lg p-4 text-base text-center h-26 border border-gray-200"
-                  >
+                  <Card key={hop.name}>
                     {hop.name} {hop.amount.value} {hop.amount.unit} @{" "}
                     {hop.timing.time.value} {hop.timing.time.unit}
-                  </div>
+                  </Card>
                 ))}
-              </div>
-            </div>
+              </GridDiv>
+            </SubSection>
 
-            <div className="py-2">
-              <div className="text-xl">Yeasts</div>
-              <div className="grid grid-flow-col grid-cols-3 gap-4">
+            <SubSection>
+              <Header2>Yeasts</Header2>
+              <GridDiv>
                 {beer.ingredients.culture_additions.map((yeast) => (
-                  <div
-                    key={yeast.name}
-                    className="hover:bg-blue-100 group block rounded-lg p-4 text-base text-center h-26 border border-gray-200"
-                  >
-                    {yeast.name}
-                  </div>
+                  <Card key={yeast.name}>{yeast.name}</Card>
                 ))}
-              </div>
-            </div>
+              </GridDiv>
+            </SubSection>
           </div>
-        </section>
-      </div>
+        </Section>
+      </Container>
     </div>
   );
 }
 
 Beer.propTypes = {
   beer: shape({
-      slug: string,
-    }).isRequired,
+    slug: string,
+  }).isRequired,
 };
 
-export const getStaticPaths: GetStaticPaths= async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const beers = getbeers();
   return {
     paths: beers.map((beer) => ({
@@ -86,7 +130,7 @@ export const getStaticPaths: GetStaticPaths= async () => {
     })),
     fallback: false,
   };
-}
+};
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const filePath = path.join(
@@ -99,4 +143,4 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const recipe = beerJson.beerjson.recipes[0];
   recipe.slug = context.params.slug;
   return { props: { beer: recipe } };
-}
+};

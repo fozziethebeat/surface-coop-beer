@@ -1,11 +1,16 @@
+import React, { useState } from "react";
+import styled from "styled-components";
+import useSWR from "swr";
+
 import Head from "../components/head";
 import Nav from "../components/nav";
 
-import React, { useState } from "react";
-import useSWR from "swr";
-
 const fetcher = (url) => fetch(url).then((res) => res.json());
 const SIZE = 20;
+
+const ContainerDiv = styled.div`
+width: 100%;
+`;
 
 function HopSet({ prefix, index }) {
   const real_index = index * SIZE;
@@ -28,7 +33,7 @@ export default function HopsPage() {
 
       <Nav />
 
-      <div className="w-full">
+      <ContainerDiv>
         <input
           type="name"
           onChange={(e) => setState({ ...state, prefix: e.target.value })}
@@ -39,7 +44,7 @@ export default function HopsPage() {
         <button onClick={() => setState({ ...state, index: state.index + 1 })}>
           Load More
         </button>
-      </div>
+      </ContainerDiv>
     </div>
   );
 }

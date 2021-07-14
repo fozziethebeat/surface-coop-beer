@@ -1,11 +1,17 @@
-import Head from "../../components/head";
-import Nav from "../../components/nav";
 import { GetServerSideProps } from "next";
-
 import { shape, string } from "prop-types";
+import styled from "styled-components";
+
 import { PrismaClient } from "@prisma/client";
 
+import Head from "../../components/head";
+import Nav from "../../components/nav";
+
 const prisma = new PrismaClient();
+
+const ContainerDiv = styled.div`
+width: 100%;
+`;
 
 export default function HopPage({ hop }) {
   return (
@@ -14,10 +20,10 @@ export default function HopPage({ hop }) {
 
       <Nav />
 
-      <div className="w-full">
+      <ContainerDiv>
         <div>{hop.Name}</div>
         <div>{hop.Aroma}</div>
-      </div>
+      </ContainerDiv>
     </div>
   );
 }

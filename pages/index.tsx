@@ -5,11 +5,32 @@ import Link from "next/link";
 import path from "path";
 import { arrayOf, shape, string } from "prop-types";
 import React from "react";
+import styled from "styled-components";
 
 import BeerList from "../components/BeerList";
 import Head from "../components/head";
 import Nav from "../components/nav";
 import getbeers from "../lib/getbeers";
+
+const ContainerDiv = styled.div`
+width: 100%;
+`;
+
+const ImageDiv = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const TitleDiv = styled.div`
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  text-align: center;
+  width: 100%;
+`;
+
+const SubtitleDiv = styled.p`
+  text-align: center;
+`;
 
 export default function IndexPage({ beers }) {
   return (
@@ -18,14 +39,14 @@ export default function IndexPage({ beers }) {
 
       <Nav />
 
-      <div className="w-full">
-        <div className="flex justify-center">
+      <ContainerDiv>
+        <ImageDiv>
           <Image src="/Surface.svg" height={360} width={360} />
-        </div>
+        </ImageDiv>
 
-        <div className="w-full text-xl text-center">Surface Beer</div>
-        <p className="text-center">Checkout the beers so far</p>
-      </div>
+        <TitleDiv>Surface Beer</TitleDiv>
+        <SubtitleDiv>Checkout the beers so far</SubtitleDiv>
+      </ContainerDiv>
 
       <BeerList beers={beers} />
     </div>
