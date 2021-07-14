@@ -1,5 +1,6 @@
 import NextHead from "next/head";
 import { string } from "prop-types";
+import React from "react";
 
 const defaultDescription = "";
 const defaultKeywords = "";
@@ -51,10 +52,25 @@ const Head = (props) => (
 );
 
 Head.propTypes = {
+  /**
+   * The title of the page.
+   */
   title: string,
+  /**
+   * The description of the page.
+   */
   description: string,
+  /**
+   * A combination of descriptive keywords.
+   */
   keywords: string,
+  /**
+   * The base URL.
+   */
   url: string,
+  /**
+   * The original gangster image.
+   */
   ogImage: string,
 };
 

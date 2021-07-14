@@ -1,6 +1,9 @@
 import fs from "fs";
 import path from "path";
 
+/**
+ * Returns a list of Beers that are found in the local filesystem.
+ */
 export default function getbeers() {
   const postsDirectory = path.join(process.cwd(), "data/recipes");
   const filenames = fs.readdirSync(postsDirectory);

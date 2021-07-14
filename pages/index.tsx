@@ -1,8 +1,10 @@
 import fs from "fs";
-import path from "path";
-
+import { GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import path from "path";
+import { arrayOf, shape, string } from "prop-types";
+import React from "react";
 
 import BeerList from "../components/BeerList";
 import Head from "../components/head";
@@ -30,11 +32,19 @@ export default function IndexPage({ beers }) {
   );
 }
 
-export async function getStaticProps() {
+IndexPage.propTypes = {
+  beers: arrayOf(
+    shape({
+      slug: string,
+    })
+  ).isRequired,
+};
+
+export const getStaticProps: GetStaticProps = async () => {
   const beers = getbeers();
   return {
     props: {
       beers,
     },
   };
-}
+};

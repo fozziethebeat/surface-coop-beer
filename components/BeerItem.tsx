@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import React from "react";
 import Link from "next/link";
+import { shape, string } from "prop-types";
+import React from "react";
 
 function BeerItem({ beer }) {
   return (
@@ -18,9 +18,9 @@ BeerItem.propTypes = {
   /**
    * A single beer
    */
-  beer: PropTypes.shape({
-    slug: PropTypes.string,
-    name: PropTypes.string,
+  beer: shape({
+    slug: string,
+    name: string,
   }).isRequired,
 };
 

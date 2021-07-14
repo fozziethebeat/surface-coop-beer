@@ -1,9 +1,11 @@
 import Link from "next/link";
+import React from "react";
 
 const links = [
   {
     href: "//github.com/fozziethebeat/surface-coop-beer",
     label: "Github",
+    key: '',
   },
 ].map((link) => {
   link.key = `nav-link-${link.href}-${link.label}`;

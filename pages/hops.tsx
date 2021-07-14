@@ -1,7 +1,7 @@
 import Head from "../components/head";
 import Nav from "../components/nav";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import useSWR from "swr";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());

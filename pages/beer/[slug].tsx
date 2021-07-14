@@ -1,5 +1,8 @@
 import fs from "fs";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { shape, string } from "prop-types";
 import path from "path";
+import React from "react";
 
 import Head from "../../components/head";
 import Nav from "../../components/nav";
@@ -67,7 +70,13 @@ export default function Beer({ beer }) {
   );
 }
 
-export async function getStaticPaths() {
+Beer.propTypes = {
+  beer: shape({
+      slug: string,
+    }).isRequired,
+};
+
+export const getStaticPaths: GetStaticPaths= async () => {
   const beers = getbeers();
   return {
     paths: beers.map((beer) => ({
@@ -79,15 +88,15 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }) {
+export const getStaticProps: GetStaticProps = async (context) => {
   const filePath = path.join(
     process.cwd(),
     "data/recipes",
-    params.slug + ".json"
+    context.params.slug + ".json"
   );
   const beerJson = JSON.parse(fs.readFileSync(filePath, "utf8"));
 
   const recipe = beerJson.beerjson.recipes[0];
-  recipe.slug = params.slug;
+  recipe.slug = context.params.slug;
   return { props: { beer: recipe } };
 }
