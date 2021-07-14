@@ -41,7 +41,7 @@ export default function IndexPage({ beers }) {
 
       <ContainerDiv>
         <ImageDiv>
-          <Image src="/Surface.svg" height={360} width={360} />
+          <Image alt="Suface" src="/Surface.svg" height={360} width={360} />
         </ImageDiv>
 
         <TitleDiv>Surface Beer</TitleDiv>

@@ -90,8 +90,8 @@ export default function Beer({ beer }) {
             <SubSection>
               <Header2>Hops</Header2>
               <GridDiv>
-                {beer.ingredients.hop_additions.map((hop) => (
-                  <Card key={hop.name}>
+                {beer.ingredients.hop_additions.map((hop, index) => (
+                  <Card key={index}>
                     {hop.name} {hop.amount.value} {hop.amount.unit} @{" "}
                     {hop.timing.time.value} {hop.timing.time.unit}
                   </Card>

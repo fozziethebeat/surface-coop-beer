@@ -9,7 +9,7 @@ interface HopParams {
   prefix?: string,
 }
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   const params: HopParams = req.query;
 
   const start_index = Number(params.index) || 0;
@@ -35,3 +35,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   });
   res.status(200).json(result);
 };
+
+export default handler;

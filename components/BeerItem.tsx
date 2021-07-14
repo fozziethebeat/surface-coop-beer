@@ -13,6 +13,7 @@ const BeerLink = styled.a`
   border-radius: 0.5rem;
   border-style: solid;
   border-width: 1px;
+  color: black;
   box-sizing: border-box;
   display: block;
   float: none;
@@ -21,6 +22,7 @@ const BeerLink = styled.a`
   line-height: 60px;
   padding: 1rem;
   positin: static;
+  text-decoration: none;
   text-align: center;
   z-index: auto;
 `;
@@ -28,7 +30,7 @@ const BeerLink = styled.a`
 function BeerItem({ beer }) {
   return (
     <li>
-      <Link as={`/beer/${beer.slug}`} href="/beer/[id]">
+      <Link as={`/beer/${beer.slug}`} href="/beer/[id]" passHref>
         <BeerLink>{beer.name}</BeerLink>
       </Link>
     </li>

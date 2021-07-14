@@ -50,14 +50,14 @@ const Nav = () => (
   <StyledNav>
     <OuterList>
       <ListItem>
-        <Link href="/">
+        <Link href="/" passHref>
           <NavLink>Home</NavLink>
         </Link>
       </ListItem>
       <InnerList>
         {links.map(({ key, href, label }) => (
           <ListItem key={key}>
-            <Link href={href}>
+            <Link href={href} passHref>
               <NavLink>{label}</NavLink>
             </Link>
           </ListItem>
