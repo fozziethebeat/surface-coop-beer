@@ -9,7 +9,9 @@
     "start": "next start",
     "postinstall": "prisma generate",
     "vercel-build": "prisma generate && next build",
-    "prisma:generate": "prisma generate"
+    "prisma:generate": "prisma generate",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "keywords": [],
   "author": "",
@@ -29,11 +31,18 @@
     "react-dom": "17.0.2",
     "slugify": "^1.5.3",
     "styled-components": "^5.3.0",
+    "styled-system": "^5.1.5",
     "swr": "^0.5.6"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@storybook/addon-actions": "^6.3.4",
+    "@storybook/addon-essentials": "^6.3.4",
+    "@storybook/addon-links": "^6.3.4",
+    "@storybook/react": "^6.3.4",
     "@types/prop-types": "^15.7.4",
     "@types/react": "^17.0.14",
+    "babel-loader": "^8.2.2",
     "babel-plugin-styled-components": "^1.13.2",
     "eslint": "^7.30.0",
     "eslint-config-next": "^11.0.1",

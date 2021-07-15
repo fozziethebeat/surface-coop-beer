@@ -8,28 +8,16 @@ import React from "react";
 import styled from "styled-components";
 
 import BeerList from "../components/BeerList";
+import Container from "../components/Container";
+import Header2 from "../components/Header2";
+import Title from "../components/Title";
 import Head from "../components/head";
 import Nav from "../components/nav";
 import getbeers from "../lib/getbeers";
 
-const ContainerDiv = styled.div`
-width: 100%;
-`;
-
 const ImageDiv = styled.div`
   display: flex;
   justify-content: center;
-`;
-
-const TitleDiv = styled.div`
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-  text-align: center;
-  width: 100%;
-`;
-
-const SubtitleDiv = styled.p`
-  text-align: center;
 `;
 
 export default function IndexPage({ beers }) {
@@ -39,14 +27,14 @@ export default function IndexPage({ beers }) {
 
       <Nav />
 
-      <ContainerDiv>
+      <Container>
         <ImageDiv>
           <Image alt="Suface" src="/Surface.svg" height={360} width={360} />
         </ImageDiv>
 
-        <TitleDiv>Surface Beer</TitleDiv>
-        <SubtitleDiv>Checkout the beers so far</SubtitleDiv>
-      </ContainerDiv>
+        <Title>Surface Beer</Title>
+        <Header2>Checkout the beers so far</Header2>
+      </Container>
 
       <BeerList beers={beers} />
     </div>

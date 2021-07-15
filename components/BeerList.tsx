@@ -3,32 +3,23 @@ import React from "react";
 import styled from "styled-components";
 
 import BeerItem from "./BeerItem";
+import Section from "./Section";
 
-const BeerSection = styled.section`
-  padding-bottom: 1.5rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  padding-top: 1rem;
-`;
-
-const BeerUnorderedList = styled.ul`
+const Grid = styled.div`
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  list-style: none;
-  margin: 0;
-  padding: 0;
 `;
 
 function BeerList({ beers }) {
   return (
-    <BeerSection>
-      <BeerUnorderedList>
+    <Section>
+      <Grid>
         {beers.map((beer) => (
           <BeerItem key={beer.slug} beer={beer} />
         ))}
-      </BeerUnorderedList>
-    </BeerSection>
+      </Grid>
+    </Section>
   );
 }
 
