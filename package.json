@@ -1,7 +1,7 @@
 {
-  "name": "create-next-app-default",
+  "name": "surface-coop-beer",
   "version": "0.1.0",
-  "description": "",
+  "description": "A catalog of beers",
   "main": "index.js",
   "scripts": {
     "dev": "next",
@@ -14,7 +14,7 @@
     "build-storybook": "build-storybook"
   },
   "keywords": [],
-  "author": "",
+  "author": "fozziethebeat",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^2.27.0",
@@ -39,9 +39,13 @@
     "@storybook/addon-actions": "^6.3.4",
     "@storybook/addon-essentials": "^6.3.4",
     "@storybook/addon-links": "^6.3.4",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/builder-webpack5": "^6.3.4",
+    "@storybook/manager-webpack5": "^6.3.4",
     "@storybook/react": "^6.3.4",
     "@types/prop-types": "^15.7.4",
     "@types/react": "^17.0.14",
+    "@types/webpack": "^5.28.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-styled-components": "^1.13.2",
     "eslint": "^7.30.0",
